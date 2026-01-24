@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - zombi
+  - player
   layers:
   - Default
   - TransparentFX

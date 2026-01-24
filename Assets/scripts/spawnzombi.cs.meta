@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: e16eccc3ac1d459429edaef8a2b75cbb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - zombi: {fileID: 2906520009583127822, guid: 1bfdb5074be1f0b43b9c641add7f0b9d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
