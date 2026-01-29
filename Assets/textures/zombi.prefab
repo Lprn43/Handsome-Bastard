@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1854484676507173149}
   - component: {fileID: 8780161313891323590}
   - component: {fileID: -8601105975107937709}
+  - component: {fileID: -633646000016726025}
   m_Layer: 0
   m_Name: zombi
   m_TagString: zombi
@@ -194,7 +195,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c790f34c3b6d844be6a2bd478b517e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::zombi
-  speed: 0.2
+  speed: 0.35
   rb: {fileID: 1854484676507173149}
   playerrb: {fileID: 0}
   player: {fileID: 0}
+  death: {fileID: -7355486724082732431, guid: 0502ab41e6efbbc44a31383eb1b452b4, type: 3}
+--- !u!95 &-633646000016726025
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906520009583127822}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d894d280190228a40898221f3bac64e0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

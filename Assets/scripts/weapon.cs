@@ -10,6 +10,10 @@ public class weapon : MonoBehaviour
     bool reload;
     Ray2D ray;
     public Rigidbody2D player,gun,weaponpng,pistolsonu;
+    public Animator animator;
+    public Sprite zombiedeath;
+    public AudioSource audio1,audio2;
+    //public Animator enemyanimator;
     IEnumerator Bekle()
     {
         print("bekle");
@@ -20,52 +24,77 @@ public class weapon : MonoBehaviour
     }
     void Start()
     {
-        ammo = capacity;   
+        ammo = capacity;  
     }
-
+    
     void Update()
     {
+        // 1. Mouse pozisyonunu al
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        /*Vector3 direction = mousepos - player.transform.position;
+        mousepos.z = 0; // 2D olduðu için Z'yi sýfýrla
+
+        // 2. Yönü hesapla (Hedef - Baþlangýç)
+        Vector2 direction = (Vector2)mousepos - (Vector2)player.transform.position;
+
+        // 3. Silahýn pozisyonunu karakterin etrafýnda sabitle (0.4f birim uzaklýkta)
+        gun.transform.position = (Vector2)player.position + direction.normalized * 0.4f;
+
+        // 4. Silahýn rotasyonunu ayarla
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        gun.transform.rotation = Quaternion.Euler(new Vector3(0, 0,angle));
-        gun.transform.position = player.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(0.4f, 0, 0);*/
-        ray = new Ray2D(player.transform.position,mousepos);
-        //Debug.DrawLine(player.transform.position, mousepos);
-        //Debug.Log(ray.direction);
-        if (gun.transform.position.x - player.transform.position.x > 0)
+        gun.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // 5. Görselin ters dönmesini engelle (Senin yaptýðýn scale mantýðý)
+        // Silah saða bakýyorsa normal, sola bakýyorsa Y ekseninde ters çevir (Upside down olmamasý için)
+        if (Mathf.Abs(angle) > 90)
         {
-            weaponpng.transform.localScale = new Vector3(0.3f,-0.3f,0.3f);
+            weaponpng.transform.localScale = new Vector3(0.3f, -0.3f, 0.3f);
         }
         else
         {
             weaponpng.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         }
 
-        gun.transform.right = -ray.direction;
-        //gun.transform.rotation = new Quaternion(ray.direction.x,0,0,0);
-        gun.transform.position = new Vector2(player.position.x + ray.direction.normalized.x*0.4f,player.position.y + ray.direction.normalized.y*0.4f);
-        /*float angle = Mathf.Atan2(ray.direction.normalized.y,ray.direction.normalized.x)* Mathf.Rad2Deg;
-        gun.transform.eulerAngles = new Vector3(0,0,angle);*/
-        RaycastHit2D raycast = Physics2D.Raycast(pistolsonu.transform.position,mousepos);
-        Debug.DrawLine(pistolsonu.transform.position,mousepos);
+        // 6. Ateþ etme ve Raycast (Hedef mousepos olmalý, mesafe sýnýrlanabilir)
+        if (Input.GetMouseButtonDown(0) && !reload)
+        {
+            // Raycast'i silahtan fareye doðru atýyoruz
+            RaycastHit2D hit = Physics2D.Raycast(pistolsonu.transform.position, direction);
+            Debug.DrawRay(pistolsonu.transform.position, direction * 10, Color.red, 0.2f);
+            audio1.Play(0);
+            ammo--;
+            print(ammo);
+            if (hit.collider != null)
+            {
+                Animator enemyanimator = hit.collider.GetComponent<Animator>();
+                hit.collider.GetComponent<SpriteRenderer>().sprite = zombiedeath;
+                enemyanimator.SetBool("death", true);
+            }
 
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("shoot", true);
+        }
+        else animator.SetBool("shoot", false);
+        
+        // ... Reload kodlarýn ayný kalabilir
         if (Input.GetKeyDown(KeyCode.R) || ammo == 0)
         {
+            audio2.Play(0);
             reload = true;
             StartCoroutine(Bekle());
         }
         if(Input.GetMouseButtonDown(0) && reload == true){ print("reloaddayken ates ettin"); }
-        if (Input.GetMouseButtonDown(0) && reload == false)
+        /*if (Input.GetMouseButtonDown(0) && reload == false)
         {
             ammo--;
             print(ammo);
-            if (raycast && /*raycast.transform.gameObject.tag == "zombi" &&*/ reload == false)
+            if (raycast && raycast.transform.gameObject.tag == "zombi" && reload == false)
             {
                 raycast.transform.gameObject.SetActive(false);
                 print(raycast.transform.gameObject.tag);
             }
-        }
+        }*/
         
 
     }
