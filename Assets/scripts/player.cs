@@ -8,6 +8,7 @@ public class player : MonoBehaviour
     public Animator anim;
     public SpriteRenderer spriteRenderer;
     public Sprite death;
+    public GameObject menu;
     void Start()
     {
     }
@@ -84,6 +85,7 @@ public class player : MonoBehaviour
         if (anim.GetBool("olu") == true)
         {
             spriteRenderer.sprite = death;
+            menu.SetActive(true);
             anim.enabled = false;
         }
     }

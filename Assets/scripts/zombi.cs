@@ -38,6 +38,7 @@ public class zombi : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = death;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<Animator>().enabled = false;
+            rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, 0.2f);
         }
     }
 }

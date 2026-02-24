@@ -2,6 +2,7 @@ using System.Collections;
 using System.Threading;
 using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class weapon : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class weapon : MonoBehaviour
     public Animator animator;
     public Sprite zombiedeath;
     public AudioSource audio1,audio2;
+    public Text ac;
+    public GameObject playerob,silah;
     //public Animator enemyanimator;
     IEnumerator Bekle()
     {
@@ -30,6 +33,12 @@ public class weapon : MonoBehaviour
     
     void Update()
     {
+        Animator olu = playerob.GetComponent<Animator>();
+        if (olu.GetBool("olu") == true)
+        {
+            silah.SetActive(false);
+        }
+        ac.text = ammo.ToString();
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousepos.z = 0;
 
@@ -70,9 +79,10 @@ public class weapon : MonoBehaviour
         }
         else animator.SetBool("shoot", false);
         
-        if (Input.GetKeyDown(KeyCode.R) || ammo == 0)
+        if (Input.GetKeyDown(KeyCode.R) || ammo == 0 && ammo != 10)
         {
             audio2.Play(0);
+            ammo = 0;
             reload = true;
             StartCoroutine(Bekle());
         }
