@@ -6,6 +6,8 @@ TagManager:
   tags:
   - zombi
   - player
+  - canva
+  - uilizombi
   layers:
   - Default
   - TransparentFX

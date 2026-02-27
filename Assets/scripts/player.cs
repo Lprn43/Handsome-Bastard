@@ -1,5 +1,8 @@
+using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
@@ -9,18 +12,40 @@ public class player : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite death;
     public GameObject menu;
+    public int can = 100;
+    public Text canui;
+    float sure;
+    IEnumerator Dusmandamage()
+    {
+        can -= 20;
+        yield return new WaitForSeconds(1);
+    }
     void Start()
     {
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "zombi")
         {
-            alive = false;
+            StartCoroutine
+            sure += Time.deltaTime;
+            if (sure > 1)
+            {
+                can -= 20;
+                sure = 0;
+            }
+            //alive = false;
         }
-    }
+    }*/
+
+
     void Update()
     {
+        canui.text = can.ToString();
+        if (can <= 0)
+        {
+            alive = false;
+        }
         if (alive == true)
         {
             anim.enabled = true;
@@ -88,5 +113,10 @@ public class player : MonoBehaviour
             menu.SetActive(true);
             anim.enabled = false;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        can -= 20;
+        Vector2 direction = (collision.transform.position - rb.transform.position).normalized;
     }
 }

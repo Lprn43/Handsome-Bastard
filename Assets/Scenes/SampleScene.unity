@@ -19875,7 +19875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16eccc3ac1d459429edaef8a2b75cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::spawnzombi
-  zombi: {fileID: 2906520009583127822, guid: 1bfdb5074be1f0b43b9c641add7f0b9d, type: 3}
+  zombi: {fileID: 8891222920287523004, guid: 1bfdb5074be1f0b43b9c641add7f0b9d, type: 3}
   spawnpoint:
   - {fileID: 94814711}
   - {fileID: 913442000}
@@ -30760,7 +30760,7 @@ GameObject:
   - component: {fileID: 949170571}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: canva
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30844,6 +30844,7 @@ RectTransform:
   - {fileID: 1982581835}
   - {fileID: 689297189}
   - {fileID: 1893822089}
+  - {fileID: 1690644199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -40398,6 +40399,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1197871931}
   death: {fileID: 8817285864415607075, guid: fe50078325f94784e81d440b31274e4b, type: 3}
   menu: {fileID: 1893822088}
+  can: 100
+  canui: {fileID: 1690644197}
 --- !u!1 &1199595962
 GameObject:
   m_ObjectHideFlags: 0
@@ -55093,6 +55096,129 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::background
   rb: {fileID: 1690549234}
   player: {fileID: 1197871932}
+--- !u!1 &1690644196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690644199}
+  - component: {fileID: 1690644198}
+  - component: {fileID: 1690644197}
+  - component: {fileID: 1690644201}
+  - component: {fileID: 1690644202}
+  m_Layer: 5
+  m_Name: playercan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1690644197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690644196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 94
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 229
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1690644198
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690644196}
+  m_CullTransparentMesh: 1
+--- !u!224 &1690644199
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690644196}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 226.08005}
+  m_LocalScale: {x: 0.6999035, y: 0.6999035, z: 0.6999035}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 949170574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 271.04984}
+  m_SizeDelta: {x: 684.5, y: 303.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!50 &1690644201
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690644196}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1690644202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690644196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c38e366388d5543a5f9b0f4410f7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::canuitakip
+  p: {fileID: 0}
+  player: {fileID: 1197871932}
+  rb: {fileID: 1690644201}
 --- !u!1 &1695833491
 GameObject:
   m_ObjectHideFlags: 0

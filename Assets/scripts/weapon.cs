@@ -67,9 +67,10 @@ public class weapon : MonoBehaviour
             print(ammo);
             if (hit.collider != null)
             {
+                hit.collider.GetComponent<zombi>().can -= 50;
                 Animator enemyanimator = hit.collider.GetComponent<Animator>();
-                hit.collider.GetComponent<SpriteRenderer>().sprite = zombiedeath;
-                enemyanimator.SetBool("death", true);
+                //hit.collider.GetComponent<SpriteRenderer>().sprite = zombiedeath;
+                //enemyanimator.SetBool("death", true);
             }
 
         }
